@@ -41,7 +41,7 @@ class downloader(object):
         html = req.text
         bf = BeautifulSoup(html,features="html.parser")
         texts = bf.find_all('div', id = 'nr1')
-        texts = texts[0].text.replace('\xa0'*8,'\n\n')
+        texts = texts[0].text.replace('\n','\n\n')
         return texts
     """
     函数说明：将爬取的文章内容写入文件
@@ -62,7 +62,7 @@ if __name__ == "__main__":
     print('《默读》开始下载：')
     for i in range(dl.nums):
         dl.writer(dl.names[i],'默读.txt', dl.get_contents(dl.urls[i]))
-        sys.stdout.write(" 已下载：%.3f%%" % float(i/dl.nums) + '\r')
+        sys.stdout.write(" 已下载：%.1f%%" % float(i/dl.nums*100) + '\r')
         sys.stdout.flush()
 
     print('《默读》下载完成')

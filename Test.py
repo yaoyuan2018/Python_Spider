@@ -10,7 +10,7 @@ if __name__ == '__main__':
     html = req.text
     div_bf = BeautifulSoup(html)
     div = div_bf.find_all('div', id='nr1')
-    texts = div[0].text.replace('</p>','\n\n')
+    texts = div[0].text.replace('\n',"\n\n")
 
-    # print(div[0])
+    # print(div[0].text)
     print(texts)
